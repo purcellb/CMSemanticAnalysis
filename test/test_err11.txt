@@ -1,0 +1,8 @@
+int f(void)
+{
+   int a[10];
+   return a; /* invalid type of return expression */
+}
+void main(void)
+{
+}

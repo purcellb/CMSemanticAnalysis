@@ -1,0 +1,19 @@
+int factorial(int n)
+{
+   int x;
+int y; int z;
+   x = 10 + 9;
+   return x;
+x = 10 + 9;
+x = 10 + 9;
+x = 10 + 9;
+return x;
+return x;
+return x;
+   method(3);
+}
+
+void main(void)
+{
+   output(factorial(input()));
+}

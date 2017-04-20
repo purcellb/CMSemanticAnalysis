@@ -1,0 +1,11 @@
+void main(void)
+{
+   int i;
+   {
+      int i;
+      int j;
+      int k;
+      int j[10]; /* multiply-defined */
+      int w;
+   }
+}

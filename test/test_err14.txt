@@ -1,0 +1,9 @@
+int f(void)
+{
+   return 0;
+}
+void main(void)
+{
+   int i;
+   i = 2*f-3; /* missing () after f */
+}

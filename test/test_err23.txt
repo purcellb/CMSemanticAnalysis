@@ -1,0 +1,6 @@
+void main(void)
+{
+   int AA;
+   AA(); /* AA is not a function */
+   return;
+}

@@ -1,0 +1,12 @@
+void f(void)
+{
+}
+
+void main(void)
+{
+   if (f()) /* invalid conditional expression */
+   {
+      int i;
+      i = 100;
+   }
+}

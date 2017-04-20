@@ -1,0 +1,10 @@
+int f(void)
+{
+   return 100;
+}
+void main(void)
+{
+   int i;
+   i = f(12); /* invalid argument to f */
+   return;
+}

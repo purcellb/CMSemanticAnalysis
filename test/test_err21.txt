@@ -1,0 +1,7 @@
+int f(int x[])
+{
+   return x+1; /* invalid type of left operand of + */
+}
+void main(void)
+{
+}

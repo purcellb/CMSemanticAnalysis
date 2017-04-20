@@ -1,0 +1,8 @@
+void f(int x, int y)
+{
+}
+void main(void)
+{
+   int i;
+   f(i); /* invalid argument to f */
+}

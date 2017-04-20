@@ -1,0 +1,3 @@
+int main(void) /* invalid declaration of main */
+{
+}

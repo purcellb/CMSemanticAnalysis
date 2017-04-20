@@ -1,0 +1,14 @@
+void main(void)
+{
+   int i[10];
+   int j[20];
+   int jj[10];
+   int k;
+   int m;
+   k = jj[i[2]];
+
+
+
+
+   m = j[i]; /* invalid type of subscript at line 13*/
+}

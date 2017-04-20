@@ -1,0 +1,6 @@
+void main(void)
+{
+   int x,y;
+   int j;
+   j = 0;
+}

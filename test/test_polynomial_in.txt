@@ -1,0 +1,41 @@
+int term(int coefficient, int x, int n)
+{
+   if (n == 0)
+      return coefficient;
+   else
+      return term(coefficient, x, n - 1) * x;
+}
+
+void main(void)
+{
+   int maxexponent;
+   if ((maxexponent = input()) >= 0)
+      if (maxexponent <= 4)
+      {
+         int coefficient[5];
+         {
+            int i;
+            i = maxexponent;
+            while (i >= 0)
+            {
+               coefficient[i] = input();
+               i = i - 1;
+            }
+         }
+         {
+            int x;
+            while (x = input())
+            {
+               int sum;
+               int n;
+               sum = n = 0;
+               while (n <= maxexponent)
+               {
+                  sum = sum + term(coefficient[n], x, n);
+                  n = n + 1;
+               }
+               output(sum);
+            }
+         }
+      }
+}

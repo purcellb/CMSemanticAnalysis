@@ -1,0 +1,7 @@
+int f(int x, int y, int z, int a, int b)
+{
+   return x+y+z+a+b;
+}
+void main(int argc, int argv) /* invalid declaration of main */
+{
+}

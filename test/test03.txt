@@ -1,0 +1,10 @@
+int x;
+int y;
+void main(void)
+{
+   x = 17;
+   y = x + 6;
+   x = 140 - x;
+   output(y);
+   output(x);
+}

@@ -1,0 +1,8 @@
+int f(int xy, int yx, int xy /* multiply-defined */, int zz)
+{
+   return zz;
+}
+
+void main(void)
+{
+}

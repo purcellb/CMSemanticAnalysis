@@ -1,0 +1,9 @@
+void f(void)
+{
+}
+void main(void)
+{
+   int i;
+   i = f(); /* invalid type of right operand of = */
+   i = 12;
+}

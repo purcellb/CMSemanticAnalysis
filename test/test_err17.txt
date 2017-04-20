@@ -1,0 +1,9 @@
+void f(void)
+{
+}
+void main(void)
+{
+   int x[10];
+   x[f()] = 100; /* invalid type of subscript */
+   return;
+}

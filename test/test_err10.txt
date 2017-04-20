@@ -1,0 +1,8 @@
+void main(void)
+{
+   int i;
+   int j;
+   i = 12;
+   j = 13;
+   return i+j; /* unexpected return expression */
+}

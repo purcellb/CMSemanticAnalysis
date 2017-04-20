@@ -1,0 +1,10 @@
+int f(int x)
+{
+   return x;
+}
+void main(void)
+{
+   int i;
+   i = f[1]; /* cannot subscript f */
+   return;
+}

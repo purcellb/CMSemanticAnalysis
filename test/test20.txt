@@ -1,0 +1,15 @@
+int x;
+
+void f(void)
+{
+   int x;
+   x = 100;
+}
+
+int y;
+
+void main(void)
+{
+   f();
+   output(x); /* writes 0 */
+}

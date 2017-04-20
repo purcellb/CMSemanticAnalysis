@@ -1,0 +1,20 @@
+int z;
+void f(int y)
+{ /* nothing wrong with this function */
+   int abc;
+   int acb;
+   int bac;
+   int bca;
+   int cab;
+   int cba;
+   abc = cba + bca;
+   acb = bac - cab;
+}
+int Z;
+void main(void)
+{
+   int x;
+   z = Z = 100;
+   f(x);
+   x = abc; /* undeclared identifier abc */
+}

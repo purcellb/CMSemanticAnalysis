@@ -1,0 +1,6 @@
+void func(int A[], int A[ ]) /* multiply-defined */
+{
+}
+void main(void)
+{
+}

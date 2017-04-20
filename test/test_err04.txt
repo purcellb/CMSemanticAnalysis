@@ -1,0 +1,9 @@
+void ff(int x)
+{
+}
+void ff(int x) /* multiply-defined */
+{
+}
+void main(void)
+{
+}

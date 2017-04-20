@@ -1,0 +1,7 @@
+void main(void)
+{
+   int a[10];
+   a[0] = 1;
+   a = 5; /* invalid type of left operand of = */
+   a[1] = 3;
+}

@@ -1,0 +1,19 @@
+int xyz;
+int i;
+int j;
+int k[5];
+void main(void)
+{
+   xyz = 10;
+   if (xyz == 0);
+   else output(23);
+   while (0);
+   output(123);
+   i = j = 5;
+   i = ((j = j + 2) - (i - 1)*8) - 10 + ((120*i/3 + 17*3) - (xyz-xyz));
+   output(i+j);
+   output(i+106+(j<i));
+   k[j - i] = 10; /* negative subscript */
+   /* should never get here */
+   output(555);
+}

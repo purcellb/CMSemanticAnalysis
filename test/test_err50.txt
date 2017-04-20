@@ -1,0 +1,10 @@
+int test(void){
+	int a;
+	a = input();
+	while(a>0)
+		return a;
+	/*This function may not return a value when a>0 is false*/
+}
+void main(void)
+{
+}

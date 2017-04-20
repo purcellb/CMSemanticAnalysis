@@ -1,0 +1,14 @@
+void f(void)
+{
+}
+void g(int x[])
+{
+   f();
+}
+void h(void)
+{
+   g(100); /* invalid argument to g */
+}
+void main(void)
+{
+}

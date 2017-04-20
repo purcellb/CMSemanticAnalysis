@@ -1,0 +1,10 @@
+void fab(int fab, int baf)
+{
+   fab = 1;
+   baf = 2;
+}
+void main(void)
+{
+   fab(12, 30);
+   baf = 100; /* undeclared identifier */
+}

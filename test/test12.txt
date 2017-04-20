@@ -1,0 +1,13 @@
+int n;
+int product;
+void main(void)
+{
+   product = 1;
+   n = input();
+   while (n > 0)
+   {
+      product = input()*product;
+      n = n - 1;
+   }
+   output(product);
+}

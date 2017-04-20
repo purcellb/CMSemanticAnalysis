@@ -1,0 +1,6 @@
+void test(void){
+}
+void main(void)
+{
+   main(); /* cannot call main directly */
+}

@@ -1,0 +1,20 @@
+int abs(int x)
+{
+   int a[100];
+   a[99] = 117;
+   if (x < 0)
+   {
+      int b[200];
+      x = 0 - x;
+      return x;
+   }
+   if (a[99] != 117)
+      return 0;
+   return x;
+}
+
+void main(void)
+{
+   output(abs(input()));
+   return;
+}

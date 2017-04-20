@@ -1,0 +1,278 @@
+// JavaCUP example
+package parser;
+import ast.*;
+import sem.*;
+import java_cup.runtime.*;
+
+parser code {:
+   boolean parsing_failed = false;
+   String source_filename;
+
+   public SrcLoc sLoc(java_cup.runtime.Symbol token) {return new SrcLoc(token.left, token.right, source_filename);}
+   
+   public parser(Lexer mylexer, String fname) 
+   {
+    super(mylexer);
+   	source_filename = fname;
+   }
+   
+   public void syntax_error(java_cup.runtime.Symbol cur_token) {
+   	   parsing_failed = true;
+   	   System.err.println("Syntax error " + sLoc(cur_token).toString() + " Got: " + cur_token.toString());
+   }
+   
+   public boolean hasFailed() { return parsing_failed;}
+
+:}
+
+/* Terminals (tokens returned by the scanner). */
+terminal    LEXSymbol   PLUS, MINUS, TIMES, DIVIDE, SEMI, COMMA;
+terminal    LEXSymbol   LT, GT, LE, GE, EQ, NE, ASSIGN;
+terminal    LEXSymbol   LP, RP, LS, RS, LC, RC;
+terminal    LEXSymbol   INT, VOID, WHILE, IF, ELSE, RETURN;
+terminal    LEXSymbol   NUM;
+terminal    LEXSymbol   ID;
+
+/* Non terminals */
+non terminal                   program;
+non terminal ASTnode           declaration_list;
+non terminal ASTnode           declaration;
+non terminal ASTnode           var_declaration;
+non terminal ASTnode           fun_declaration;
+non terminal ASTnode           params, param_list;
+non terminal ASTnode           param;
+non terminal ASTnode           compound_stmt;
+non terminal ASTnode           local_declarations;
+non terminal ASTnode           statement_list;
+non terminal ASTnode           statement;
+non terminal ASTnode           expression_stmt, selection_stmt, iteration_stmt, return_stmt;
+non terminal ASTnode           expression;
+non terminal ASTnode           addop, mulop, relop;
+non terminal ASTtype           type_specifier;
+non terminal ASTnode           var;
+non terminal ASTnode	       simple_expression;
+non terminal ASTnode           additive_expression;
+non terminal ASTnode	       term;
+non terminal ASTnode	       factor;
+non terminal ASTnode	       call;
+non terminal ASTnode	       args, arg_list;
+
+
+/* Precedences */
+precedence right ASSIGN;
+precedence left LT,GT,LE,GE,EQ,NE;
+precedence left PLUS, MINUS;
+precedence left TIMES, DIVIDE;
+precedence left LP, LS;
+precedence nonassoc ELSE;
+
+
+/* The grammar rules */
+
+program   ::= declaration_list:my_program
+				{:
+				    //System.out.println(my_program.traverse(0));
+
+					SEMscope topscope = new SEMscope(null);
+					System.out.println("Building scopes ......");
+					Func_Descriptor input_func = new Func_Descriptor("input");
+                    if(input_func.overload(new ASTtype("void") , new ASTtype("int"), new SrcLoc(0,0))) {
+                        topscope.insertFunc(input_func);
+                    }
+
+                    Func_Descriptor output_func = new Func_Descriptor("output");
+                    if(output_func.overload(new ASTtype("int") , new ASTtype("void"), new SrcLoc(0,0))) {
+                        topscope.insertFunc(output_func);
+                    }
+
+					my_program.buildscopes(topscope);
+                    System.out.println("Done!");
+					System.out.println("Performing semantics analysis ......");
+					my_program.analyze();
+                    System.out.println("Done!");
+					//check if main is defined
+					if(!topscope.main_found){
+					    topscope.error_output("main function must be defined!");
+					}
+
+ 				:}
+		  ;
+
+declaration_list ::=
+			declaration:d
+			{:
+			     RESULT = d;
+			:}
+          | declaration_list:s declaration:l
+          	{: RESULT = new ASTlist(s, l); :}
+          ;
+
+declaration ::= var_declaration:vd
+				{: RESULT = vd; :}
+            | fun_declaration:fd
+            	{: RESULT = fd; :}
+            ;
+
+var_declaration ::= type_specifier:t ID:name SEMI
+				{:
+
+				    RESULT = new ASTvardecl(t, name); :}
+			|  type_specifier:t ID:name LS NUM:n RS SEMI
+				{: RESULT = new ASTarraydecl(t, name, n); :}
+			;
+
+type_specifier ::= INT:t
+				{:
+				    RESULT = new ASTtype(t); :}
+			|   VOID:t
+				{: RESULT = new ASTtype(t); :}
+			;
+
+//ASTfunc(ASTtype given_type, LEXSymbol given_symbol, ASTtype given_formals, ASTnode given_body)
+fun_declaration ::= type_specifier:t ID:i LP params:f RP compound_stmt:b
+				{: RESULT = new ASTfunc(t, i, f, b);  :}
+			;
+
+params ::=  param_list:pl
+            {: RESULT = pl; :}
+          | VOID:v
+            {:
+                RESULT = new ASTleaf(v);
+            :}
+          ;
+
+param_list ::= param_list:l COMMA param:p
+				{: RESULT = new ASTparamlist(l, p); :}
+            | param:p
+            	{: RESULT = p; :}
+ 	  	    ;
+
+param ::=   type_specifier:t ID:name
+            {: RESULT = new ASTformal(t, name, false); :}
+           | type_specifier:t ID:name LS RS
+            {: RESULT = new ASTformal(t, name, true); :}
+           ;
+
+compound_stmt ::= LC local_declarations:decls statement_list:stmts RC
+			  {:
+                    RESULT = new ASTblock(decls, stmts);
+			  :}
+          ;
+
+local_declarations   ::=  local_declarations:l var_declaration:v
+                          {:
+
+                                RESULT = new ASTlist(l, v);
+                          :}
+                          |
+                          {:
+                                RESULT = new ASTleaf();
+                          :}
+          ;
+
+statement_list ::= statement_list:l statement:s
+			{: RESULT = new ASTlist(l, s); :}
+          | {:
+                RESULT = new ASTleaf();
+            :}
+          ;
+
+statement ::=       expression_stmt:e
+                    {: RESULT = e; :}
+              |     compound_stmt:c
+                    {: RESULT = c; :}
+              |     iteration_stmt:i
+                    {: RESULT = i; :}
+              |     return_stmt:r
+                    {: RESULT = r; :}
+              |     selection_stmt:s
+                    {: RESULT = s; :}
+		  ;
+
+selection_stmt ::=          IF LP expression:e RP statement:s
+                            {: RESULT = new ASTifthen(e, s); :}
+                        |   IF LP expression:e RP statement:s ELSE statement:es
+                            {: RESULT = new ASTifthenelse(e, s, es); :}
+                       ;
+
+
+expression_stmt ::=   expression:e SEMI
+                    {: RESULT = new ASTexprstatement(e); :}
+                  |   SEMI
+                    {:
+                        RESULT = new ASTleaf();
+                    :}
+	      ;
+
+iteration_stmt ::= WHILE LP expression:e RP statement:s
+                {: RESULT = new ASTwhile(e, s); :}
+          ;
+
+return_stmt ::= RETURN:r SEMI
+                {:
+                    RESULT = new ASTreturn(r);
+                :}
+              | RETURN:r expression:e SEMI
+               {: RESULT = new ASTreturn(e, r); :}
+              ;
+
+expression  ::= var:l ASSIGN:a expression:r
+                {: RESULT = new ASTassignment(l, r, a); :}
+          |   simple_expression:s
+           {: RESULT = s; :}
+          ;
+
+var ::=       ID:name  {: RESULT = new ASTident(name); :}
+          |   ID:name LS expression:e RS {: RESULT = new ASTarrayder(new ASTident(name), e); :}
+          ;
+
+simple_expression  ::= additive_expression:ael relop:op additive_expression:ae
+                {: RESULT = new ASTbinexp(ael, (ASTbinop)op, ae); :}
+          |   additive_expression:ae
+           {: RESULT = ae; :}
+          ;
+
+relop ::=   LE:o {: RESULT = new ASTbinop(o); :}
+          | LT:o {: RESULT = new ASTbinop(o); :}
+          | GE:o {: RESULT = new ASTbinop(o); :}
+          | GT:o {: RESULT = new ASTbinop(o); :}
+          | EQ:o {: RESULT = new ASTbinop(o); :}
+          | NE:o {: RESULT = new ASTbinop(o); :}
+          ;
+
+additive_expression  ::= additive_expression:l addop:op term:t
+                        {: RESULT = new ASTbinexp(l, (ASTbinop)op, t); :}
+                      | term:t
+                        {: RESULT = t; :}
+                      ;
+
+addop ::=   PLUS:o {: RESULT = new ASTbinop(o); :}
+        |   MINUS:o {: RESULT = new ASTbinop(o); :}
+        ;
+
+term ::=    term:t mulop:op factor:f     {: RESULT = new ASTbinexp(t,(ASTbinop)op,f); :}
+        |   factor:f                    {: RESULT = f; :}
+        ;
+
+mulop ::=   TIMES:o {: RESULT = new ASTbinop(o); :}
+        |   DIVIDE:o {: RESULT = new ASTbinop(o); :}
+        ;
+
+factor ::=  LP expression:e RP    {: RESULT = e; :}
+        |   var:v                   {: RESULT = v; :}
+        |   call:c                 {: RESULT = c; :}
+        |   NUM:n                  {: RESULT = new ASTnumber(n); :}
+        ;
+
+call ::= ID:name LP args:actuals RP          {: RESULT = new ASTcall(name, actuals); :}
+        ;
+
+args ::=    arg_list:l          {: RESULT = l; :}
+        |                       {:
+                                    RESULT = new ASTleaf();
+                                :}
+        ;
+
+arg_list ::= arg_list:l COMMA expression:e  {: RESULT = new ASTarglist(l, e); :}
+        |   expression:e                    {: RESULT = e; :}
+        ;

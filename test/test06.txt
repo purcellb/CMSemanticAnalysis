@@ -1,0 +1,11 @@
+int i;
+int a[10];
+int j;
+void main(void)
+{
+   i = 5;
+   a[i] = 123;
+   a[4] = 45;
+   j = a[5] - 100;
+   output(j);
+}

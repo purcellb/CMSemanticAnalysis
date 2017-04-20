@@ -1,0 +1,45 @@
+void main(void)
+{  /* writes 1 to 16 */
+   int x;
+   int y;
+   int z[10];
+   x = 5;
+   y = 6;
+   {
+      int a;
+      int A[100];
+      int b;
+      a = 3;
+      b = 4;
+      {
+         int c;
+         int C[50];
+         int d;
+         c = 1;
+         d = 2;
+         output(c);
+         output(d);
+         output(a);
+         output(b);
+         output(x);
+         output(y);
+      }
+      {
+         int e;
+         int E[75];
+         int f;
+         e = 7;
+         f = 8;
+         output(e);
+         output(f);
+         output(a = a + 6);
+         output(b = b + 6);
+      }
+      output(a + 2);
+      output(b + 2);
+      output(x = x + 8);
+      output(y = y + 8);
+   }
+   output(x + 2);
+   output(y + 2);
+}

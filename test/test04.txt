@@ -1,0 +1,11 @@
+int first;
+int second;
+int third;
+void main(void)
+{
+   first = 100;
+   second = first / 17;
+   third = 4 * second;
+   second = second - 2;
+   output(second + third);
+}

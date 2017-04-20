@@ -1,0 +1,28 @@
+void f(void)
+{
+}
+
+void g(void)
+{
+   int i;
+   int j[10];
+   {
+      int k;
+      int l;
+   }
+}
+
+int h(void)
+{
+   return 23;
+}
+
+void main(void)
+{
+   int i;
+   f();
+   g();
+   i = h();
+   output(i);
+}
+   

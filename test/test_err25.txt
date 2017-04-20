@@ -1,0 +1,13 @@
+void f(int x, int y[], int z)
+{
+}
+void g(int a, int b, int c)
+{
+   int z[100];
+   f(a+1, z, a-1);
+}
+void main(void)
+{
+   int zz[100];
+   g(100, 200, zz); /* invalid third argument to g */
+}

@@ -1,0 +1,17 @@
+int m;
+int n;
+void main(void)
+{
+   m = 12;
+   if (m > 10)
+      n = 23;
+   else
+      n = 0-17;
+   output(n);
+   m = 0;
+   if (m)
+      n = 0-117;
+   else
+      n = 123;
+   output(n);
+}

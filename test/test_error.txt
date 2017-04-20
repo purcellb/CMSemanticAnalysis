@@ -1,0 +1,6 @@
+void main(void)
+{
+   int a[0]; /* invalid array size */
+   int x;
+   x = 1;
+}

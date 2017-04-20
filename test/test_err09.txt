@@ -1,0 +1,9 @@
+int f(void)
+{
+   int i;
+   i = 12;
+   return; /* missing return expression */
+}
+void main(void)
+{
+}

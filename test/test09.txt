@@ -1,0 +1,38 @@
+int i;
+int x[600];
+int n;
+void main(void)
+{
+   int z[10];
+   n = 600;
+   i = 0;
+   while (i < n)
+   {
+      int w;
+      x[i] = 0 - 1;
+      if (x[i] >= 0)
+         return;
+      if (i < 0)
+         return;
+      i = i + 1;
+   }
+   if (n != 600)
+      return;
+   i = 1;
+   while (i < n)
+   {
+      x[i] = 1;
+      i = 2 * i;
+   }
+   i = 0;
+   while (1)
+   {
+      if (x[i] > 0)
+         output(i);
+      i = i + 1;
+      if (i >= n)
+         return;
+   }
+   /* should never get here */
+   output(23);
+}

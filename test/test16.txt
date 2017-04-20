@@ -1,0 +1,58 @@
+void writepos(int arg)
+{
+   if (arg <= 0)
+      return;
+   output(arg);
+}
+
+int a;
+int b;
+int c;
+int d;
+int e;
+int f;
+
+void write(int a, int b, int c, int d, int e)
+{
+   writepos(a);
+   b = b + a;
+   writepos(b);
+   c = c + b;
+   writepos(c);
+   d = d + c;
+   writepos(d);
+   e = e + d;
+   writepos(e);
+   f = f + e;
+   writepos(f);
+   {
+      int a;
+      int b;
+      int c;
+      a = b = c = 0;
+      return;
+   }
+}
+
+void main(void)
+{
+   int d;
+   int e;
+   a = 1;
+   b = 2;
+   c = 3;
+   d = 4;
+   e = 5;
+   f = 6;
+   /* write 1  3  6 10 15 21 */
+   write(a, b, c, d, e);
+   /* write 1  2  3  4  5 21 */
+   writepos(0);
+   writepos(a);
+   writepos(b);
+   writepos(c);
+   writepos(d);
+   writepos(e);
+   writepos(f);
+   return;
+}

@@ -1,0 +1,16 @@
+void empty(void){}
+
+void two(void) {int s; int t; s; while(t); while(s!=2*3/4) t;}
+
+int W[23];
+
+void nested(void)
+{ int a; a = 0;
+  { int b; b = 1;
+    { int c; c = 2;
+      { int d; }
+    }
+  }
+}
+
+int w;

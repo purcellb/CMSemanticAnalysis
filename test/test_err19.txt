@@ -1,0 +1,6 @@
+void main(void)
+{
+   int array[100];
+   if (array <= 20) /* invalid type of left operand of <= */
+      return;
+}

@@ -1,0 +1,14 @@
+void main(void)
+{
+   int i;
+   i = 10;
+   {
+      int i;
+      int j;
+      i = 5;
+      j = i+1;
+   }
+   i = 2 * i;
+   j = 2 * i; /* j is undeclared */
+   i = i + 1;
+}

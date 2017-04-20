@@ -1,0 +1,47 @@
+/* C-Minus Program to Reverse a Sequence of Integers */
+
+int X[100];
+int maxvalues;
+
+int readArray(int a[])
+{
+   int n;
+   n = input();
+   if (n > 0)
+      if (n <= maxvalues)
+      {
+         int i;
+         i = 0;
+         while (i < n)
+         {
+            a[i] = input();
+            i = i + 1;
+         }
+         return n;
+      }
+      else
+         return 0;
+   return 0;
+}
+
+void reverseArray(int a[], int n)
+{
+   int i;
+   i = n - 1;
+   while (i >= 0)
+   {
+      output(a[i]);
+      i = i - 1;
+   };
+   return;
+}
+
+void main(void)
+{
+   int n;
+   maxvalues = 100;
+   if ((n = readArray(X)) == 0)
+   { /* invalid input */ }
+   else
+      reverseArray(X, n);
+}

@@ -1,0 +1,33 @@
+int value;
+
+void writevalue(void)
+{
+   output(value);
+}
+
+void getvalue(int index, int array[])
+{
+   value = array[index];
+}
+
+void process(int a, int b, int c, int d)
+{
+   int myarray[4];
+   int i;
+   myarray[0] = a;
+   myarray[1] = b;
+   myarray[2] = c;
+   myarray[3] = d;
+   i = 0;
+   while (i < 4)
+   {
+      getvalue(i, myarray);
+      writevalue();
+      i = i + 1;
+   }
+}
+
+void main(void)
+{  /* writes 101 102 103 104 */
+   process(101, 102, 103, 104);
+}
