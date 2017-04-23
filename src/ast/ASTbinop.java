@@ -1,4 +1,4 @@
--package ast;
+package ast;
 import parser.sym;
 import parser.LEXSymbol;
 

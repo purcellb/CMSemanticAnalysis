@@ -37,8 +37,11 @@ public class ASTident extends ASTnode {
 
 	public ASTtype analyze()
 	{
-
-		return new ASTtype("void");
+		//can not be null or empty string
+		if (nodevalue!= null && nodevalue != ""){
+			return new ASTtype("void");
+		}
+		return new ASTtype("error");
 	}
 }
 

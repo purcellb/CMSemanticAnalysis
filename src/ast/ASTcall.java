@@ -21,7 +21,7 @@ public class ASTcall extends ASTnode {
 
 	public ASTcall(String givenmethod, ASTnode givenactuals)
 	{ 	
-		super(); /
+		super();
 		methodname = givenmethod;
 		actuals = givenactuals;
 		nodelabel = "call";

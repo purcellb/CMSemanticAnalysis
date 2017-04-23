@@ -49,17 +49,14 @@ public class ASTifthen extends ASTnode {
     }
 
     public ASTtype analyze() {
-        if (Settings.print_debug_msg) {
-            System.out.println("Analyzing: \n" + traverse(0));
-        }
 
         ASTtype ct = condition.analyze();
+        ASTtype st = statementif.analyze();
+        ASTtype error_type = new ASTtype("error");
         if (ct == null || !ct.equals(new ASTtype(sym.INT))) {
             scope.error_output("Condition expression must be integer...");
+            ct = new ASTtype("error");
         }
-        ASTtype error_type = new ASTtype("error");
-
-        ASTtype st = statementif.analyze();
 
         if (ct.equals(error_type) || (st.equals(error_type))) {
             return error_type;
@@ -67,5 +64,4 @@ public class ASTifthen extends ASTnode {
             return st;
         }
     }
-}
 }

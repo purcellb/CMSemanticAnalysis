@@ -33,6 +33,14 @@ public class ASTexprstatement extends ASTnode {
 		/**
 		 *
 		 * Write code here
+		 *--------
+		 * I dont understand what scope changes would need to be done here
+		 * as far as i can tell from the semantics of C- in the text and the implementation of this class there is no scope
+		 * to manage here
+		 *
+		 * an expression-stmt is an optional expression followed by a semicolon
+		 *
+		 * I assume im misunderstanding something here.
 		 *
 		 */
 	}

@@ -52,6 +52,10 @@ public class ASTreturn extends ASTnode {
 		/**
 		 *
 		 * Write code here
+		 *------
+		 * I think i understand what this needs to do. In code, return takes the program OUT of the scope its in
+		 * and this should do the same thing for the semantic analysis.
+		 * However, i dont understand how to do it in this SemanticAnaylzer code.
 		 *
 		 */
 	}
