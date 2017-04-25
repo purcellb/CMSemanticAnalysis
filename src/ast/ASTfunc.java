@@ -5,8 +5,6 @@ import parser.sym;
 import sem.Func_Descriptor;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to a method declaration node
 * 
 *****/

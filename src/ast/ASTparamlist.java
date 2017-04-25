@@ -2,8 +2,6 @@ package ast;
 import sem.SEMscope;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to a generic pair node
 * 
 *****/

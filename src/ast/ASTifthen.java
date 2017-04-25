@@ -5,8 +5,6 @@ import parser.sym;
 import sem.SEMscope;
 
 /****
- * CSC 484 Compiler Theory
- * <p>
  * This class corresponds to an if then statement node
  *****/
 

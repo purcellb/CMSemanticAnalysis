@@ -3,9 +3,7 @@ import sem.SEMscope;
 import parser.SrcLoc;
 
 /****
-* CSC 484 Compiler Theory
-* 
-* This class corresponds to a generic pair node
+* This class corresponds to a generic pair of nodes
 * 
 *****/
 

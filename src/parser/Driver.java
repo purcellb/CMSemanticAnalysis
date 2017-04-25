@@ -1,8 +1,6 @@
 /****
- * CSC 484 Compiler Theory
- *
  * The is the driver class used to start execution of this project. Arguments to pass: source program to compile.
- *
+ * @param args the source program to compile args[0]
  ****/
 
 package parser;
@@ -19,19 +17,19 @@ public class Driver {
 	 */
 
   static boolean do_debug_parse = false;
-	
+
 	String[] my_args;
 	public static void main(String[] args) {
 		Driver d = new Driver(args);
 		d.run();
 	}
-	
+
 	public Driver(String[] args) {
 		my_args = args;
 	}
-	
+
 	int func(int i) {return 1;}
-	
+
 	public void run() {
 		System.out.println("Compiling [" + my_args[0] + "]");
 	

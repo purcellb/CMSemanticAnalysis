@@ -7,8 +7,6 @@ import sem.SEMscope;
 import sem.Variable_Descriptor;
 
 /****
- * CSC 484 Compiler Theory
- * <p>
  * This class corresponds to an local declaration node
  *****/
 

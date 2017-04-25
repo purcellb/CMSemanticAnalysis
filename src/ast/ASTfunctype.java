@@ -3,8 +3,6 @@ package ast;
 import parser.SrcLoc;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to a function type
 * 
 *****/

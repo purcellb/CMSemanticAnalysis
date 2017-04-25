@@ -7,8 +7,6 @@ import sem.Func_Descriptor;
 import java.util.Iterator;
 import parser.Settings;
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to an method call node
 * 
 *****/

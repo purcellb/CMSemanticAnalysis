@@ -1,4 +1,3 @@
-// JavaCUP example
 package parser;
 import ast.*;
 import sem.*;

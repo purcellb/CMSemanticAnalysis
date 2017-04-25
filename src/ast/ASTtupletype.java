@@ -3,8 +3,6 @@ package ast;
 import sem.SEMscope;
 
 /****
-* CSC484 Compiler Theory
-* 
 * This class corresponds to a tuple type
 * 
 *****/

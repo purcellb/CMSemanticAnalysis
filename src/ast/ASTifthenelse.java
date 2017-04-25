@@ -4,8 +4,6 @@ import parser.LEXSymbol;
 import parser.sym;
 import parser.Settings;
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to an ifthenelse statement node
 * 
 *****/

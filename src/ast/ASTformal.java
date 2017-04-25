@@ -4,8 +4,6 @@ import sem.*;
 import parser.LEXSymbol;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to a formal node
 * 
 *****/

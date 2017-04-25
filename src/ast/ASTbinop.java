@@ -3,8 +3,6 @@ import parser.sym;
 import parser.LEXSymbol;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to an identifier node
 * 
 *****/

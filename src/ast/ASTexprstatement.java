@@ -3,8 +3,6 @@ import sem.SEMscope;
 import parser.Settings;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to an expressions statement node
 * 
 *****/

@@ -4,8 +4,6 @@ import parser.LEXSymbol;
 import sem.SEMscope;
 
 /****
-* CSC 484 Compiler Theory
-* 
 * This class corresponds to type node
 * its constructor accepts  the three different possible 
 * types for C-

@@ -5,8 +5,6 @@ import parser.Settings;
 import sem.*;
 
 /****
- * CSC 484 Compiler Theory
- * <p>
  * This class corresponds to an array declaration node
  *****/
 

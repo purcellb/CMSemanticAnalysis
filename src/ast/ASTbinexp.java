@@ -6,8 +6,6 @@ import parser.sym;
 import sem.SEMscope;
 
 /****
- * CSC 484 Compiler Theory
- * <p>
  * This class corresponds to an binary operation node
  * it has a flexible constructor corresponding to a number
  * of different binary operations.

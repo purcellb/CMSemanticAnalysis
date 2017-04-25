@@ -1,29 +1,29 @@
 package sem;
 
-import parser.SrcLoc;
 import ast.ASTtype;
+import parser.SrcLoc;
 
 /****
-    * CSC484 Compiler Theory
-    * 
-	* Formal_Descriptor class -- used for C- parameters in function definition.
-	* 
-	*
-*****/
+ * Formal_Descriptor class -- used for C- parameters in function definition.
+ *****/
 
 public class Formal_Descriptor extends Descriptor {
 
-	protected boolean isArray;
+    protected boolean isArray;
 
-	public Formal_Descriptor(ASTtype given_type, String given_name, boolean isArray, SrcLoc given_location)
-	{
-		isemptyflag=false;
-		type = given_type;
-		name = given_name;
-		this.isArray = isArray;
-		location = given_location;
-	}
+    public Formal_Descriptor(ASTtype given_type, String given_name, boolean isArray, SrcLoc given_location) {
+        isemptyflag = false;
+        type = given_type;
+        name = given_name;
+        this.isArray = isArray;
+        location = given_location;
+    }
 
-	public boolean isParam() { return true; }
-	public boolean isArray() { return isArray; }
+    public boolean isParam() {
+        return true;
+    }
+
+    public boolean isArray() {
+        return isArray;
+    }
 }

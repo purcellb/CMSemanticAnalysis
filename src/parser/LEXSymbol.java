@@ -1,7 +1,5 @@
 /****
- * CSC 484 Compiler Theory
- *
- * The following class is used to wrap a token with its location info used for error message printing during
+ Used to wrap a token with its location info used for error message printing during
  * semantics analysis.
  *
  ****/
